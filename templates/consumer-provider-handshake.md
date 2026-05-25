@@ -3,18 +3,18 @@
 ## Thông tin chung
 
 - Lab: FIT4110 Lab 03
-- Ngày:
-- Provider team:
-- Consumer team:
-- Provider service:
-- Consumer service:
+- Ngày: 2026-05-25
+- Provider team: team-vision
+- Consumer team: camerastream
+- Provider service: AI Vision
+- Consumer service: Camera Stream
 
 ## Contract
 
-- Contract file:
-- Mock base URL:
-- Auth method:
-- Endpoint được test:
+- Contract file: contracts/ai-vision.openapi.yaml
+- Mock base URL: http://localhost:4011
+- Auth method: Bearer token
+- Endpoint được test: POST /api/v1/vision/analyze
 
 ## Smoke test
 
@@ -28,6 +28,10 @@ Content-Type: application/json
 
 ```json
 {
+	"camera_id": "CAM01",
+	"image_url": "https://example.com/frame.jpg",
+	"timestamp": "2026-05-22T10:30:00Z",
+	"correlationId": "corr-smoke-001"
 }
 ```
 
@@ -35,13 +39,15 @@ Content-Type: application/json
 
 ```json
 {
+	"status": "received",
+	"message": "Ảnh đã được đưa vào hàng đợi xử lý ngầm."
 }
 ```
 
 ## Kết quả
 
-- [ ] Consumer gọi mock thành công.
-- [ ] Consumer parse được field cần dùng.
+- [x] Consumer gọi mock thành công.
+- [x] Consumer parse được field cần dùng.
 - [ ] Consumer hiểu lỗi 4xx/5xx provider trả về.
 - [ ] Có Newman report hoặc screenshot.
 
